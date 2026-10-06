@@ -4,19 +4,40 @@
 <nav>
   <span class="logo">TravelBloom</span>
   <ul>
-    <li><a href="index.html" >Home</a></li>
-    <li><a href="about.html" >About Us</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
     <li><a href="contact.html" class="active">Contact Us</a></li>
   </ul>
-  
 </nav>
-<main><h2>Contact Us</h2>
+<main>
+<h2>Contact Us</h2>
+<p>Have a question or a destination suggestion? Reach out using the details below or send us a message with the form.</p>
+
+<h2 style="margin-top:28px">Contact Information</h2>
+<ul style="margin-left:20px">
+<li><strong>Email:</strong> <a href="mailto:info@travelbloom.com">info@travelbloom.com</a></li>
+<li><strong>Phone:</strong> +92 300 0000000</li>
+<li><strong>Address:</strong> Karachi, Sindh, Pakistan</li>
+<li><strong>Working hours:</strong> Monday to Friday, 9:00 AM to 5:00 PM</li>
+</ul>
+
+<h2 style="margin-top:28px">Send Us an Email</h2>
 <form id="contactForm">
 <div><label for="name">Name</label><input id="name" name="name" required></div>
-<div><label for="email">Email</label><input id="email" name="email" type="email" required></div>
+<div><label for="email">Your Email</label><input id="email" name="email" type="email" required></div>
+<div><label for="subject">Subject</label><input id="subject" name="subject" required></div>
 <div><label for="message">Message</label><textarea id="message" name="message" rows="5" required></textarea></div>
-<button type="submit">Send message</button>
+<button type="submit">Send Email</button>
 <p id="thanks" role="status"></p>
-</form></main>
-<script>document.getElementById('contactForm').addEventListener('submit',function(e){e.preventDefault();document.getElementById('thanks').textContent='Thank you! Your message has been sent.';this.reset();});</script>
+</form>
+</main>
+<script>
+document.getElementById('contactForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var n = this.name.value, em = this.email.value, s = this.subject.value, m = this.message.value;
+  var body = encodeURIComponent('Name: ' + n + '\nEmail: ' + em + '\n\n' + m);
+  document.getElementById('thanks').textContent = 'Thank you! Opening your email app...';
+  window.location.href = 'mailto:info@travelbloom.com?subject=' + encodeURIComponent(s) + '&body=' + body;
+});
+</script>
 </body></html>
